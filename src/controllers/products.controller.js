@@ -51,10 +51,16 @@ const deleteProductById = async (req, res) => {
   const { id } = req.params
 
   const pool = await getConnection()
-  const result = await pool
-    .request()
-    .input('Id', id)
-    .query(queries.deleteProductById)
+  await pool.request().input('Id', id).query(queries.deleteProductById)
+
+  res.sendStatus(204)
+}
+
+const getTotalProducts = async (req, res) => {
+  const pool = await getConnection()
+  const result = await pool.request().query(queries.getTotalProducts)
+
+  console.log(result)
 
   res.sendStatus(204)
 }
@@ -64,4 +70,5 @@ module.exports = {
   createdNewProducts,
   getAllProductById,
   deleteProductById,
+  getTotalProducts,
 }

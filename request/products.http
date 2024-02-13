@@ -6,6 +6,9 @@ GET {{api}}
 ### GET BY ID
 GET {{api}}/2
 
+### COUNT
+GET {{api}}/count
+
 ### POST
 POST {{api}}
 Content-Type: application/json
@@ -16,5 +19,10 @@ Content-Type: application/json
     "quantity": "201"
 }
 
+
+
 ### DELETE
 DELETE  {{api}}/7
+
+
+
