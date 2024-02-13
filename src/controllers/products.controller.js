@@ -7,6 +7,15 @@ const getProducts = async (req, res) => {
   res.json(result.recordset)
 }
 
+const createdNewProducts = (req, res) => {
+  const { name, description } = req.body
+
+  console.log(name, description)
+
+  res.json('new product')
+}
+
 module.exports = {
   getProducts,
+  createdNewProducts,
 }

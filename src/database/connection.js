@@ -1,12 +1,11 @@
 const sql = require('mssql')
-const { get } = require('../app')
+const config = require('../utils/config')
 
 const dbSettings = {
-  user: 'angel',
-  password: 'roda1234',
-  server: 'localhost',
-  database: 'onlinestore',
-
+  user: config.USER,
+  password: config.PASSWORD,
+  server: config.SERVER,
+  database: config.DATABASE,
   options: {
     encrypt: true, // for azure
     trustServerCertificate: true, // change to true for local dev / self-signed certs
