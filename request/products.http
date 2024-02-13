@@ -15,3 +15,6 @@ Content-Type: application/json
     "description": "product 12 description",
     "quantity": "201"
 }
+
+### DELETE
+DELETE  {{api}}/7
