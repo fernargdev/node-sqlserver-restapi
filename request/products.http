@@ -14,13 +14,13 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "name": "product 15", 
-    "description": "product 15 description",
-    "quantity": "201"
+    "name": "product 16", 
+    "description": "product 16 description",
+    "quantity": "200"
 }
 
 ### DELETE
-DELETE  {{api}}/11
+DELETE  {{api}}/6
 
 ### UPDATE
 PUT {{api}}/12
@@ -29,7 +29,7 @@ Content-Type: application/json
 {
     "name": "Laptop HP",
     "description": "Gaming Latop HP",
-    "quantity": 300
+    "quantity": 100
 }
 
 
