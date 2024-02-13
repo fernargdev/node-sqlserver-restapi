@@ -1,7 +1,7 @@
 const queries = {
   getAllProducts: 'SELECT * FROM Products',
   getAllProductById: 'SELECT * FROM Products WHERE Id = @Id',
-  getTotalProducts: 'SELECT COUNT(*) FROM Products',
+  getTotalProducts: 'SELECT COUNT(*) FROM [onlinestore].[dbo].[Products]',
   createNewProduct:
     'INSERT INTO Products (name, description, quantity) VALUES (@name, @description, @quantity)',
   deleteProductById:

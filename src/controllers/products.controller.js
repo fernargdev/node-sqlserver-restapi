@@ -56,6 +56,14 @@ const deleteProductById = async (req, res) => {
   res.sendStatus(204)
 }
 
+// const getTotalProducts = async (req, res) => {
+//   const pool = await getConnection()
+
+//   const result = await pool.request().query(queries.getTotalProducts)
+//   res.json(result.recordset[0][''])
+// }
+
+// get total of products
 const getTotalProducts = async (req, res) => {
   const pool = await getConnection()
 
@@ -77,4 +85,5 @@ module.exports = {
   getAllProductById,
   deleteProductById,
   getTotalProducts,
+  updateProductById,
 }
