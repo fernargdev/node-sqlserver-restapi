@@ -14,15 +14,15 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "name": "product 12", 
-    "description": "product 12 description",
+    "name": "product 15", 
+    "description": "product 15 description",
     "quantity": "201"
 }
 
 
 
 ### DELETE
-DELETE  {{api}}/7
+DELETE  {{api}}/11
 
 
 
