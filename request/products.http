@@ -4,9 +4,10 @@
 GET {{api}}
 
 ### GET BY ID
-GET {{api}}/2
+GET {{api}}/12
 
-
+### COUNT
+GET {{api}}/count
 
 ### POST
 POST {{api}}
@@ -18,14 +19,20 @@ Content-Type: application/json
     "quantity": "201"
 }
 
-
-
 ### DELETE
 DELETE  {{api}}/11
 
+### UPDATE
+PUT {{api}}/12
+Content-Type: application/json
 
-### COUNT
-GET {{api}}/count
+{
+    "name": "Laptop HP",
+    "description": "Gaming Latop HP",
+    "quantity": 300
+}
+
+
 
 
 

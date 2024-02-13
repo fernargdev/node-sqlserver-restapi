@@ -1,3 +1,4 @@
+const { get } = require('http')
 const { getConnection, sql, queries } = require('../database/indexDb')
 
 const getProducts = async (req, res) => {
@@ -72,11 +73,22 @@ const getTotalProducts = async (req, res) => {
 }
 
 const updateProductById = async (req, res) => {
-  const { name, description } = req.body
-  let { quantity } = req.body
+  const { name, description, quantity } = req.body
+  const { id } = req.params
 
-  if (!name || !description) res.status(400).json({ error: 'Missing data' })
-  if (!quantity) quantity = 0
+  if (!name || !description || !quantity)
+    res.status(400).json({ error: 'Missing data' })
+
+  const pool = await getConnection()
+  await pool
+    .request()
+    .input('name', sql.VarChar, name)
+    .input('description', sql.Text, description)
+    .input('quantity', sql.Int, quantity)
+    .input('id', sql.Int, id)
+    .query(queries.updateProductById)
+
+  res.json({ name, description, quantity })
 }
 
 module.exports = {
