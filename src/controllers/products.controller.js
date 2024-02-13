@@ -1,18 +1,40 @@
-const { getConnection } = require('../database/connection')
+const { getConnection, sql } = require('../database/connection')
 
 const getProducts = async (req, res) => {
-  const pool = await getConnection()
-  const result = await pool.request().query('SELECT * FROM Products')
+  try {
+    const pool = await getConnection()
+    const result = await pool.request().query('SELECT * FROM Products')
 
-  res.json(result.recordset)
+    res.json(result.recordset)
+  } catch (exception) {
+    res.status(500)
+    res.send(exception.message)
+  }
 }
 
-const createdNewProducts = (req, res) => {
+const createdNewProducts = async (req, res) => {
   const { name, description } = req.body
+  let { quantity } = req.body
 
-  console.log(name, description)
+  if (!name || !description) res.status(400).json({ error: 'Missing data' })
+  if (!quantity) quantity = 0
 
-  res.json('new product')
+  try {
+    const pool = await getConnection()
+    await pool
+      .request()
+      .input('name', sql.VarChar, name)
+      .input('description', sql.Text, description)
+      .input('quantity', sql.Int, quantity)
+      .query(
+        'INSERT INTO Products (name, description, quantity) VALUES (@name, @description, @quantity)'
+      )
+
+    res.json({ name, description, quantity })
+  } catch (exception) {
+    res.status(500)
+    res.send(exception.message)
+  }
 }
 
 module.exports = {
