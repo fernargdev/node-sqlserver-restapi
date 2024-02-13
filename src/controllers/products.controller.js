@@ -12,6 +12,20 @@ const getProducts = async (req, res) => {
   }
 }
 
+const getAllProductById = async (req, res) => {
+  const { id } = req.params
+
+  const pool = await getConnection()
+  const result = await pool
+    .request()
+    .input('Id', id)
+    .query(queries.getAllProductById)
+
+  console.log(result.recordset[0])
+
+  res.send(result.recordset[0])
+}
+
 const createdNewProducts = async (req, res) => {
   const { name, description } = req.body
   let { quantity } = req.body
@@ -38,4 +52,5 @@ const createdNewProducts = async (req, res) => {
 module.exports = {
   getProducts,
   createdNewProducts,
+  getAllProductById,
 }

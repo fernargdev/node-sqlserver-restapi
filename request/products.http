@@ -3,6 +3,9 @@
 ### GET
 GET {{api}}
 
+### GET BY ID
+GET {{api}}/2
+
 ### POST
 POST {{api}}
 Content-Type: application/json
