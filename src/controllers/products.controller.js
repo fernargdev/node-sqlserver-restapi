@@ -63,6 +63,14 @@ const getTotalProducts = async (req, res) => {
   res.json(result.recordset[0][''])
 }
 
+const updateProductById = async (req, res) => {
+  const { name, description } = req.body
+  let { quantity } = req.body
+
+  if (!name || !description) res.status(400).json({ error: 'Missing data' })
+  if (!quantity) quantity = 0
+}
+
 module.exports = {
   getProducts,
   createdNewProducts,
