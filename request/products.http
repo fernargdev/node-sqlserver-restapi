@@ -8,7 +8,7 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "name": "product 11", 
-    "description": "product 11 description",
-    "quantity": "200"
+    "name": "product 12", 
+    "description": "product 12 description",
+    "quantity": "201"
 }

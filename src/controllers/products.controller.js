@@ -1,9 +1,9 @@
-const { getConnection, sql } = require('../database/connection')
+const { getConnection, sql, queries } = require('../database/indexDb')
 
 const getProducts = async (req, res) => {
   try {
     const pool = await getConnection()
-    const result = await pool.request().query('SELECT * FROM Products')
+    const result = await pool.request().query(queries.getAllProducts)
 
     res.json(result.recordset)
   } catch (exception) {
@@ -26,9 +26,7 @@ const createdNewProducts = async (req, res) => {
       .input('name', sql.VarChar, name)
       .input('description', sql.Text, description)
       .input('quantity', sql.Int, quantity)
-      .query(
-        'INSERT INTO Products (name, description, quantity) VALUES (@name, @description, @quantity)'
-      )
+      .query(queries.createNewProduct)
 
     res.json({ name, description, quantity })
   } catch (exception) {
